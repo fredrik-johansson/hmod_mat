@@ -52,6 +52,16 @@ static __inline__ mp_limb_t hmod_randmod(flint_rand_t state)
     return p;
 }
 
+static __inline__ hlimb_t * _hmod_vec_init(long len)
+{
+   return (hlimb_t *) flint_malloc(len * sizeof(hlimb_t));
+}
+
+static __inline__ void _hmod_vec_clear(hlimb_t * vec)
+{
+   flint_free(vec);
+}
+
 static __inline__ void _hmod_vec_neg(hlimb_t * a, const hlimb_t * b, long n, nmod_t mod)
 {
     long i;

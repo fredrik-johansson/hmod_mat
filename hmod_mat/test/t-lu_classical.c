@@ -34,12 +34,12 @@
 void perm(hmod_mat_t A, long * P)
 {
     long i;
-    mp_ptr * tmp;
+    hlimb_t ** tmp;
 
     if (A->c == 0 || A->r == 0)
         return;
 
-    tmp = flint_malloc(sizeof(mp_ptr) * A->r);
+    tmp = flint_malloc(sizeof(hlimb_t *) * A->r);
 
     for (i = 0; i < A->r; i++) tmp[P[i]] = A->rows[i];
     for (i = 0; i < A->r; i++) A->rows[i] = tmp[i];

@@ -44,7 +44,7 @@ hmod_mat_solve_triu_classical(hmod_mat_t X, const hmod_mat_t U,
 
     if (!unit)
     {
-        inv = _nmod_vec_init(n);
+        inv = _hmod_vec_init(n);
         for (i = 0; i < n; i++)
             inv[i] = n_invmod(hmod_mat_entry(U, i, i), mod.n);
     }
@@ -52,7 +52,7 @@ hmod_mat_solve_triu_classical(hmod_mat_t X, const hmod_mat_t U,
         inv = NULL;
 
     nlimbs = _hmod_vec_dot_bound_limbs(n, mod);
-    tmp = _nmod_vec_init(n);
+    tmp = _hmod_vec_init(n);
 
     for (i = 0; i < m; i++)
     {
@@ -74,7 +74,7 @@ hmod_mat_solve_triu_classical(hmod_mat_t X, const hmod_mat_t U,
             hmod_mat_entry(X, j, i) = tmp[j];
     }
 
-    _nmod_vec_clear(tmp);
+    _hmod_vec_clear(tmp);
     if (!unit)
-        _nmod_vec_clear(inv);
+        _hmod_vec_clear(inv);
 }
